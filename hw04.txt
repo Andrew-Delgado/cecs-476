@@ -1,0 +1,81 @@
+Andrew Delgado 
+lab71.net.cecs.csulb.edu
+csa476y1
+---------------------------------------------------------------------
+report 1: simple script)
+
+#!/bin/bash
+
+date +%m-%d-%y`
+fileName="bashlog"_$date
+
+ps aux | grep bash | grep -v cpeek > $fileName
+
+---------------------------------------------------------------------
+report 2: more advanced shell script)
+
+#!/bin/bash
+
+input=$1
+
+test -d $input
+
+if [ $? != 0 ]; then
+	echo Sorry
+else
+	find $input -executable -maxdepth 1
+fi
+---------------------------------------------------------------------
+3)
+
+ls -l /dev/root
+
+/dev/root -> name=sda2
+/dev/sdb1 -> name=sdb1
+/dev/sdc1 -> name=sdc1
+
+---------------------------------------------------------------------
+4) 
+command df
+
+778G
+
+---------------------------------------------------------------------
+5)
+
+command: mount
+
+type ext4
+read/write
+---------------------------------------------------------------------
+6)
+command: du -h
+
+204k
+---------------------------------------------------------------------
+7)
+
+command: cat /etc/fstab
+
+/dev/sdb1        /u3              ext4        defaults         1   1
+
+---------------------------------------------------------------------
+
+8)
+
+dumpe2fs -h /dev/sda2
+dumpe2fs /dev/sda2 //to find groups
+
+
+
+Filesystem state:         not clean
+block size - 35165453
+groups - 1073
+---------------------------------------------------------------------
+9)
+
+fdisk -l 
+
+Device     Start       End       Type
+/dev/sda1  2048        31258180  Linux swap
+/dev/sda2  31258181    312581807 Linux
