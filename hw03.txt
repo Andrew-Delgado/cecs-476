@@ -1,0 +1,32 @@
+Andrew Delgado
+csa476y1
+lab71.net.cecs.csulb.edu
+
+
+command: "cd /etc" //this gets us to the directory where passwd is stored
+
+command: "vipw -p" this will edit the passwd file
+
+I edited the passwd file with inserting these two lines
+
+"bob:x:13101:1201:cecsu:/home/bob:/bin/bash"
+"sue:x:13102:1202:cecsg:/home/sue:/bin/bash"
+
+I then had to create the /home/bob directories //same for sue
+
+command:"mkdir ~bob" //this will create //home/bob as the home directory
+
+chmod 755 ~bob //sets the home directory permissions //same as sue
+
+Then to find and copy the ".bash_profile" and ".login" from ~djv account
+
+command:"cp ~" + tab // this will find all files that start with "~"
+
+command:"cp ~djv/.bash_profile ~djv/.login /home/bob" //same for sue
+
+we then need to create a demo file do this from root with "vim demo"
+
+
+command:"chown -R bob:1201 /home/bob" //To change ownership of groups of home and content to the user
+ 
+

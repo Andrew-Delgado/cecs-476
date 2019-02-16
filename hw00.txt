@@ -1,0 +1,18 @@
+ Andrew Delgado
+ csa476y1
+ hostname: lab71.net.cecs.csulb.edu
+
+ command: "cat /etc/HOSTNAME" 
+ result: "lab71.net.cecs.csulb.edu"
+
+ command: "vim /etc/HOSTNAME"
+ result: "cheetah.cecs.csulb.edu"
+
+ command: "vim /etc/HOSTNAME"
+ result: "ocelot.net.csulb.edu"
+ 
+ command: "pwd"
+ result: "/net/cheetah/u3/c/csa476/y1" 
+
+ command: "ls -l"
+ result: "drwxrwxrwx 1 root root   3 Jan 19 08:54 adm-> log/" 

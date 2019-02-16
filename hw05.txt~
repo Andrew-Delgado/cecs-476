@@ -1,0 +1,65 @@
+Andrew Delgado
+lab71.net.cecs.vsulb.edu
+csa476y1
+
+
+
+1a)
+
+fdisk /dev/sdb
+
+
+
+I created two partions with fdisk 
+command: n
+
+I then set the set the partion number to 1
+I then started the sector at the first sector for me it was: 2048
+
+I only used tenpercent of the drive.
+
+I repeated this process for the second partions
+but named it partions number "2"
+-------------------------------------------------------------------------------
+
+The mount command I used.
+
+mount /dev/sdb2 /newdrive
+I then edited the fstab with 
+
+/dev/sdb2  /newdrive/ ext2 defaults 1 1 
+
+-------------------------------------------------------------------------------
+
+Disk /dev/sdb: 492 MiB, 515899392 bytes, 1007616 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x3fe7c67c
+
+Device     Boot  Start     End Sectors   Size Id Type
+/dev/sdb1         2048  100556   98509  48.1M 82 Linux swap
+/dev/sdb2       100557 1007615  907059 442.9M 83 Linux
+-------------------------------------------------------------------------------
+
+df sdb2
+
+Filesystem     1K-blocks  Used Available Use% Mounted on
+/dev/sdb2         439164  2318    414170   1% /newdisk
+
+------------------------------------------------------------------------------
+
+I added this to fstab
+ "/dev/fd0	 /mnt/extdisk     ext2        noauto           0   0"
+------------------------------------------------------------------------------
+command: fsck /dev/fd0
+
+The output did five passes over the disk
+1. Blocks and sizes
+2. Paths
+3. Connectivity
+4. Reference counts
+5. Freelist
+
+/dev/fd0: 11/184 files (0.0% non-continous), 47/1440 blocks

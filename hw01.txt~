@@ -1,0 +1,41 @@
+Andrew Delgado 
+csa476y1
+lab71.net.cecs.csulb.edu
+
+
+1) command: "cd /etc"
+   command: "wc -l passwd"
+   result: 79
+
+2) The exact name of this file "inetd.conf"
+   I found this file in the /etc directory
+   command: "cd /etc"
+   command: "cat inetd.conf"
+
+3) command: "df"
+   how to find the directory of this program?
+   command: "whereis df"
+   result:  "/usr/bin/df"
+
+4) xorg.conf-vesa
+   xorg.conf.d/
+
+5) libXfontcache.la 
+   libXfontcache.so -> libXfontcache.so.1.0.0
+   libXfontcache.so.1 -> libXfontcache.so.1.0.0
+   libXfontcache.so.1.0.0
+
+6) command: "cat cpuinfo"
+   2000.000 MHz
+
+7) command: "ls -l -r --sort=time"
+   
+  lastlog Jan 24
+  wpmt Jan 24
+  messages Jan 24
+
+8) command: "tail -3 messages"
+  
+  result: 
+  "Disconnected from 134.139.248.38 port 55288"
+  "Received disconnect from 134.139.248.17 port 34886:"

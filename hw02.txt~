@@ -1,0 +1,54 @@
+Andrew Delgado
+csa476y1
+lab71.net.cecs.csulb.edu
+
+1)command: "id volper"
+   result: "uid=100(volper) gid=300(faculty) groups=300(faculty)"
+      UID: = 100
+
+2)command: "id volper"
+   result: "uid=100(volper) gid=300(faculty) groups=300(faculty)"
+      UID: = 300
+
+3)command: "cat passwd"
+  
+ home directory: /net/aardvark/u1/volper
+
+4)command: "cat passwd"---login shell is bash.
+
+5)command:"groups volper"
+   result:"faculty"
+
+6)command:"groups djv"
+   result:"faculty mail dialout users"
+     gid = 12(mail)
+     gid = 16(dialout)
+     gid = 100(users)
+
+7) command:"getent group guest"
+    result:"guest:x:60:"---group number = 60
+   
+   command:"getent group cecsu"
+    result:"cecsu:x:71:"---group number = 71
+
+   command:"getent group cecsg"
+    result:"cecsg:x:72"---group number = 72
+
+8)/root is encrypted
+
+9)Jan 2019 //this was done by looking at the number after the first colon,
+that number is days since 1-Jan-1970
+
+10) chage -l <username>
+
+11) Making the shadow file world readable is a poor decision because it has
+the encrypted password, hash-algorithm, and salt value stored. This allows
+passwords to be decrypted.
+
+//command:"ls -al" //shows the hidden files
+
+12) 5 aliases are setup.
+
+13) 9 directories are in the path
+
+14) alias p='ps aux'

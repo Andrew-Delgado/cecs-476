@@ -1,0 +1,65 @@
+Andrew Delgado
+lab71
+csa476y1
+
+
+1) command: "uptime -p"  45 minutes
+----------------------------------------------------------------
+2) command: "uptime" 3 users
+----------------------------------------------------------------
+3) command: "uptime" result short  0.00 medium 0.00 long 0.00
+----------------------------------------------------------------
+4) command: vmstat -w
+   
+     user:   0
+   system:   0
+     idle:  99
+-------------------------------------------------------------------------------
+5) command :vmstat -s
+
+    memory in use: 120936 K used memory
+   memory in idle: 1618244 K free memory
+-------------------------------------------------------------------------------
+6)command: "ps aux --sort --rss"
+
+root       994  0.0  1.3 227056 27680 ?        Ssl  15:09   0:00
+ /usr/sbin/named
+
+apache    1164  0.0  0.4 915532  9196 ?        Sl   15:09   0:00 
+/usr/sbin/httpd -k start
+
+apache    1163  0.0  0.4 587852  9124 ?        Sl   15:09   0:00 
+/usr/sbin/httpd -k start
+-------------------------------------------------------------------------------
+7) command ps aux | grep agetty
+   result:
+   "root      1052  0.0  0.0   6948  1612 tty2     Ss+  Feb07   0:00
+/sbin/agetty 38400 tty2 linux
+root      1053  0.0  0.0   6948  1724 tty3     Ss+  Feb07   0:00 /sbin/agetty
+38400 tty3 linux
+root      1054  0.0  0.0   6948  1728 tty4     Ss+  Feb07   0:00 /sbin/agetty
+38400 tty4 linux
+root      1055  0.0  0.0   6948  1504 tty5     Ss+  Feb07   0:00 /sbin/agetty
+38400 tty5 linux
+root      1056  0.0  0.0   6948  1704 tty6     Ss+  Feb07   0:00 /sbin/agetty
+38400 tty6 linux
+root      1072  0.0  0.0   6948  1728 tty1     Ss+  Feb07   0:00 /sbin/agetty
+--noclear 38400 tty1 linux"
+
+6 lines;
+-------------------------------------------------------------------------------
+8) command: ps aux | grep rpc
+
+root        28  0.0  0.0      0     0 ?        S<   Feb07   0:00 [rpciod]
+bin        938  0.0  0.1  13060  2180 ?        Ss   Feb07   0:00 /sbin/rpcbind
+-l -w
+rpc        950  0.0  0.1  17636  2464 ?        Ss   Feb07   0:00
+/sbin/rpc.statd
+-------------------------------------------------------------------------------
+9)
+
+
+
+
+
+
