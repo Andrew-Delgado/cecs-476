@@ -1,0 +1,42 @@
+Andrew Delgado
+csa476y1
+lab71.net.cecs.csulb.edu
+
+1) What configuration option disables the action of 
+    the control-alt-backspace combination.
+
+-------------------------------------------------------------------------------
+2a) How many different mouse protocol options available?
+
+
+2b) If this file were to be used, 
+    what protocol option would be used for the mouse?
+
+
+2c) How is the default window manager set (use ls)?
+
+-------------------------------------------------------------------------------
+3a) What mouse input device was found?
+3b) What is the best Modeline supported by the video chipset (DDC)?
+3c) What is the best Modeline supported by the monitor (VGA1)?
+
+-------------------------------------------------------------------------------
+4) What device does /dev/mouse link to?
+
+-------------------------------------------------------------------------------
+5a) What window manager is used by this account?
+5b) How many windows are display when this account starts X?
+
+5c) Report the button and the line that does it?
+
+-------------------------------------------------------------------------------
+6a) Report the name of the file and the modifications you made to that file?
+6b) How did you do this?
+
+-------------------------------------------------------------------------------
+7a) What are the horizontal and vertical display resolutions?
+    (HDisplay, VDisplay)
+7b) What is the vertical synchonization rate?
+
+-------------------------------------------------------------------------------
+8) Report the name of the file you created and the contents of that file.
