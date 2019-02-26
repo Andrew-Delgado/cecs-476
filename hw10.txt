@@ -1,0 +1,28 @@
+1) 
+
+I went to the github and then found Linus Torvalds. I then clicked on his
+Linux project. I then navagate to drivers/net/ethernet/3com
+
+3c509, 3c515, 3c574_cs.c, 3c589_cs.c
+
+2)
+
+Similar to 1): Path: /drivers/net/ethernet/intel
+
+e1000, fm10k, i40e
+
+3)
+
+cat /etc/hosts
+
+maybe he wants this? "hostname && dnsdomainname"
+
+lab71.net.cecs.csulb.edu
+
+4)
+
+ifconfig -a
+
+5)
+
+ ifconfig -a
