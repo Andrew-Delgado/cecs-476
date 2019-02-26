@@ -1,0 +1,44 @@
+1)
+
+su
+mount /dev/fd0
+tar -cf /dev/fd0 /home/bob
+tar -tf /dev/fd0
+
+2)
+
+tar -xpf ~djv/giant.tgz
+
+fee fie foe
+
+name of file: fum
+who owns file: djv
+what group the file belongs to: faculty
+access rights: -rw-r--r--
+
+
+3)
+
+tar -xpf ~djv/house.txz
+
+Huff and puff
+
+4)
+
+gpg -g ~djv/joe.cr
+
+"Hi there joe"
+
+5) 
+
+man termcap | grep underline
+
+vim /etc/termcap
+
+us=/E[36m
+
+6)
+
+stop = ^S
+
+stty stop ^Y
