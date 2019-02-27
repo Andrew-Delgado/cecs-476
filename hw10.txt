@@ -1,17 +1,24 @@
-1) 
+Andrew Delgado
+csa476y1
+lab71.net.cecs.csulb.edu
+
+1) Support for several types of 3-Com (3cXXX) Ethernet cards are available for the Linux kernel, list 4
+   such cards
 
 I went to the github and then found Linus Torvalds. I then clicked on his
 Linux project. I then navagate to drivers/net/ethernet/3com
 
 3c509, 3c515, 3c574_cs.c, 3c589_cs.c
 
-2)
+-------------------------------------------------------------------------------
+2) List 3 Intel Ethernet drivers.
 
 Similar to 1): Path: /drivers/net/ethernet/intel
 
 e1000, fm10k, i40e
 
-3)
+-------------------------------------------------------------------------------
+3)  On a Parallel line cable running PLIP, what are pins 18,19 and 20 used for?
 
 cat /etc/hosts
 
@@ -19,10 +26,66 @@ maybe he wants this? "hostname && dnsdomainname"
 
 lab71.net.cecs.csulb.edu
 
-4)
+-------------------------------------------------------------------------------
+4) Use a command to find out the fully qualified hostname of your machine? 
+   What is the fully qualified hostname 
+    and what command did you use to find this out?
 
 ifconfig -a
 
-5)
+-------------------------------------------------------------------------------
+5) What is the hardware (ethernet) address of your machine?
 
  ifconfig -a
+
+-------------------------------------------------------------------------------
+6) What does it use for its broadcast address?
+
+ifconfig then look to the right for "broadcast"
+
+-------------------------------------------------------------------------------
+7) The routing table for your machine contains one gateway entry. 
+   What is that entry?
+
+jaguar.net.cecs
+
+-------------------------------------------------------------------------------
+8) What netmask does the loopback interface use?
+
+command: netmask -route
+
+then look under Genmask
+
+-------------------------------------------------------------------------------
+9) What entries are in the arp table? 
+   Give the full entries including the hardware addresses.
+
+command: arp -a -n
+
+? (134.139.248.72) at 00:22:4d:4c:79:bf [ether] on eth0
+? (134.139.248.73) at 00:22:4d:4c:78:be [ether] on eth0
+-------------------------------------------------------------------------------
+10)
+
+-------------------------------------------------------------------------------
+11)
+
+-------------------------------------------------------------------------------
+12)
+
+-------------------------------------------------------------------------------
+13) What two gateways (routers) does panther know about?
+
+
+cheetah.cecs.cs
+jaguar.net.cecs
+-------------------------------------------------------------------------------
+14)
+
+-------------------------------------------------------------------------------
+15)
+
+-------------------------------------------------------------------------------
+16)
+
+-------------------------------------------------------------------------------
