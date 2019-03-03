@@ -5,22 +5,78 @@ lab71.net.cecs.csulb.edu
 
 1) 
 
-First do ifconfig eth0 134.139.248.71 broadcast 134.139.248.95 netmask 255.255.255.224
+command: ifconfig eth0 134.139.248.71 netmask 255.255.255.224
 
-route add -net gw metric 1
+command: route add default gw 134.139.248.65
+
+command: ifconfig lo 127.0.0.1
 
 -------------------------------------------------------------------------------
 2)
+
+vim /etc/resolv.conf
+
+add ics.uci.edu on seachline
+
 -------------------------------------------------------------------------------
 3)
+
+comment out line beneath "Telnet Server"
+
+kill-HUP inetd(pid)
+
+command: "telnet lab71" should fail
 -------------------------------------------------------------------------------
 4)
+
+vim /etc/hosts.deny
+
+added in.telntd : panther.net.cecs.csulb.edu 
 -------------------------------------------------------------------------------
-5)
+5) 
+
+command: ssh jaguar
+command: rpcinfo -p jaguar
+
+portmapper
+status
+nlockmgr
+ypbind
+rquotad
+nfs
+mountd
 -------------------------------------------------------------------------------
 6)
--------------------------------------------------------------------------------
+
+command: su bob 
+command: vim ~sam/.rhosts
+    then add "panther.net.cecs.csulb.edu bob"
+
+command: ssh panther
+command: rlogin lab71 -l bob
+
+THis should allow you to login as bob without a password while being on puma
+--------------------------------------------------------------------------------
 7)
+
+
+
+add puma.net.cecs.csulb.edu to /etc/hosts.equiv on the local computer
+
+command: ssh to puma
+command: rlogin lab71 -l csa476y1
+
+should be able to login in to the lab71 without password
 -------------------------------------------------------------------------------
 8)
+
+
+command: ssh-keygen -t rsa       //on csa476xx account on lab71 machine
+
+command: scp id_rsa.pub bob@lab71:~/             //send your key to bob
+
+command: su bob
+
+command: cat id_rsa.pub >> .ssh/authorized_keys   //appends your key to bobs
+							approved keys
 -------------------------------------------------------------------------------
