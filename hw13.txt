@@ -1,0 +1,25 @@
+Andrew Delgado
+csa476y1
+lab71.net.cecs.csulb.edu
+
+-------------------------------------------------------------------------------
+1)
+
+Examine the /etc/exports file on jaguar. What directories does it export? 
+What machines does it export to? What options are used? 
+For the “what machines”, give an English description of the machines,
+i.e. figure out what the networks and netmasks mean. 
+WARNING: you need to know the options to get the action items to work.
+
+
+-------------------------------------------------------------------------------
+2)
+-------------------------------------------------------------------------------
+3)
+-------------------------------------------------------------------------------
+4)
+-------------------------------------------------------------------------------
+5)
+-------------------------------------------------------------------------------
+6)
+-------------------------------------------------------------------------------
