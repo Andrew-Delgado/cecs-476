@@ -4,7 +4,6 @@ lab71.net.cecs.csulb.edu
 
 -------------------------------------------------------------------------------
 1)
-
 Examine the /etc/exports file on jaguar. What directories does it export? 
 What machines does it export to? What options are used? 
 For the “what machines”, give an English description of the machines,
@@ -13,13 +12,65 @@ WARNING: you need to know the options to get the action items to work.
 
 
 -------------------------------------------------------------------------------
-2)
+2) 
+The machine you administer mounts two directories from cheetah.
+Report: the fstab entries on your machine that cause these mounts.
+
+
 -------------------------------------------------------------------------------
 3)
+
+Report: what NFS directories does cheetah actually have mounted (df or mount)
+
+Report: what options does cheetah use when it tries to mount the directory 
+containing ~volper and what is the name of the file that contained those 
+options.
+
+
+Report: what options does cheetah use when it tries to mount
+the directory from your machine and what is the name of the file that
+contained those options.
+
+
 -------------------------------------------------------------------------------
 4)
+
+Configure your fstab so that it attaches the directory 
+/sdb/slack13.37-64/slackware64 from jaguar on your local directory tree as 
+/mnt whenever it boots. Jaguar is already configured to make this directory
+available to your machine, you do not need to modify jaguar. 
+Your /mnt directory should already exist. Report: the file you changed on your 
+local machine and the line you added to it.
+
+
 -------------------------------------------------------------------------------
 5)
+
+Configure your machine so that it makes the directory /etc 
+available to cheetah. Cheetah will access this directory as /net/lab/labxx 
+where labxx is the name the machine you are assigned to administer. Cheetah is 
+already configured to mount your etc directory, you do not need to make 
+any modifications to cheetah. Because your exports was empty when you last 
+booted; you will also need to start rpc.nfsd and rpc.mountd. 
+(I recommend using the /etc/rc.d/rc.nfsd script to do this.)
+
+Report: the files you changed on your local machine and give the lines you 
+added to them. Also report the part of the disk free report from cheetah
+that applies to the /etc from your machine
+
 -------------------------------------------------------------------------------
 6)
+
+Configure the automounter on your machine so that it will mount the /load 
+directory from jaguar on /opt (that directory should already exist). 
+Specifically ls /opt/load should display the directory from jaguar. Use an 
+indirect map. Automount is by default disabled so you will need to enable it
+by marking the start script executable (chmod a+x /etc/rc.d/rc.autofs). 
+You will need to use that script to start and reload the automounter. 
+(Reload when you make changes to the files.) 
+
+Report: The line you added to 
+auto.master and the entire indirect file you created.
+
+
 -------------------------------------------------------------------------------
