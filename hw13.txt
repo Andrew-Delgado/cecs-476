@@ -10,27 +10,51 @@ For the “what machines”, give an English description of the machines,
 i.e. figure out what the networks and netmasks mean. 
 WARNING: you need to know the options to get the action items to work.
 
+/sdb/slack13.37-64/slackware64 134.139.248.0/255.255.255.0(ro,sync,no_subtree_check)
+/sdb/slack13.37/slackware 134.139.248.0/255.255.255.0(ro,sync,no_subtree_check)
+/sdb/slack14.2-64/slackware64 134.139.248.0/255.255.255.0(ro,sync,no_subtree_check)
 
+The machines that can be exported to are the machines on the network 134.139.248.0-255
 -------------------------------------------------------------------------------
 2) 
 The machine you administer mounts two directories from cheetah.
 Report: the fstab entries on your machine that cause these mounts.
 
+cat /etc/fstab
 
+134.139.248.17:/u3 /net/cheetah/u3 nfs soft,bg,nolock 0 0
+134.139.248.17:/u4 /net/cheetah/u4 nfs soft,bg,nolock 0 0
 -------------------------------------------------------------------------------
 3)
 
 Report: what NFS directories does cheetah actually have mounted (df or mount)
 
+mount on cheetah
+aardvark.cecs.csulb.edu:/u1 on /net/aardvark/u1
+
 Report: what options does cheetah use when it tries to mount the directory 
 containing ~volper and what is the name of the file that contained those 
 options.
 
+on cheetah
+
+cat /etc/auto.master
+cat /etc/auto.aardvark <---name of file that contained the options
+
+-soft,intr,nsfvers=2 aardvark.cecs.csulb.edu
 
 Report: what options does cheetah use when it tries to mount
 the directory from your machine and what is the name of the file that
 contained those options.
 
+on cheetah
+
+cat /etc/auto.master
+cat /etc/auto.lab
+
+then find your machine
+
+lab71 -soft,intr lab71:/etc
 
 -------------------------------------------------------------------------------
 4)
@@ -42,6 +66,9 @@ available to your machine, you do not need to modify jaguar.
 Your /mnt directory should already exist. Report: the file you changed on your 
 local machine and the line you added to it.
 
+/etc/fstab
+
+134.139.248.18:/sdb/slack14.2-64/slackware64 /mnt nfs soft,bg,nolock 0 0
 
 -------------------------------------------------------------------------------
 5)
@@ -58,6 +85,18 @@ Report: the files you changed on your local machine and give the lines you
 added to them. Also report the part of the disk free report from cheetah
 that applies to the /etc from your machine
 
+
+vim /etc/exports
+
+added this "/etc cheetah.net.cecs.csulb.edu(rw,sync,no_subtree_check)"
+
+then ssh in cheetah
+ls /net/lab/lab66
+df
+
+df -h
+
+119G available
 -------------------------------------------------------------------------------
 6)
 
@@ -72,5 +111,6 @@ You will need to use that script to start and reload the automounter.
 Report: The line you added to 
 auto.master and the entire indirect file you created.
 
-
+added to /etc/auto.master     /opt /etc/auto.jaguar
+added to /etc/auto.jaguar     load -soft,intr jaguar.net.cecs.csulb.edu:/load
 -------------------------------------------------------------------------------
