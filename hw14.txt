@@ -1,23 +1,61 @@
+Andrew Delgado
+csa476y1
+lab71.net.cecs.csulb.edu
+
 1) On you local machine, check your ftpusers and proftpd.conf files to 
 make sure that both network (NIS/yp) accounts and anonymous ftp are allowed.
 
-commented out ftp in /etc/ftpusers
+removed ftp in /etc/ftpusers
+
 
 -------------------------------------------------------------------------------
 2) Log into jaguar. Ftp to your local machine. Use the username anonymous. 
 Get the dummy test file. (If you don’t have a dummy test file 
 under ~ftp, make one up.) Report: The ftp command used, and what it says 
 when you login.
+
+
+when i logged in.
+
+"220 ProFTPD 1.3.5b Server (ProFTPD Default Installation) [134.139.248.71]
+Name (lab71:csa476y1): anonymous
+331 Anonymous login ok, send your complete email address as your password
+Password:
+230 Anonymous access granted, restrictions apply
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> "
+
+the command I used
+
+get dummy.txt
 -------------------------------------------------------------------------------
 3) Modify the anonymous account so it will put up a greeting message when at 
 the start of an anonmyous ftp. Test: go back to jaguar, ftp to anonymous 
 on your machine and make sure you see the message.
 Report: what changes did you make (give file names too).
+
+
+I added ~ftp/welcome.mes
+
+this is because proftpd.conf had message.msg already
+
+and added the line "Welcome Message!!"
+
 -------------------------------------------------------------------------------
 4) Go back to jaguar. Ftp to your local machine. Use the username bob. 
 Get the demo file. (If you didn’t remember to make a demo file when you 
 created bob, login as bob and create a text file called demo.)
 Report: The commands used.
+
+
+ssh jaguar
+ftp lab71
+
+username: bob
+password: access31
+
+get demo
 -------------------------------------------------------------------------------
 5) Change the settings on ftp so that bob may not use ftp. 
 All other ftp capabilities should still be allowed. Note: several other users 
@@ -25,12 +63,33 @@ are usually not allowed to use ftp, including root, uucp news; do not change
 these permissions. Test: make sure that bob cannot use ftp into your machine
 and your account can. Report: Exactly what change you made and to what
 file/directory you made that change.
+
+vim /etc/ftpusers 
+
+add bob so he is denied
 -------------------------------------------------------------------------------
 6) On cheetah, using your csa account, use sftp to download a file (the demo file works) from bob at your
 labxx machine.
 Report: The exact sequence of commands used.
+
+stfp lab71
+get demo
 -------------------------------------------------------------------------------
 7) Dynamically and statically loaded libraries. Compare the clogitA and clogitB commands found in
 ~djv. Examine the size of the two commands and use ldd to look at the dynamically loaded libraries.
 Report: the difference between the two commands (sizes and dynamic libraries).
+
+ls -al -h | grep clogit
+
+clogitA 9.0K
+clogitB 848K
+
+command: ldd clogitA
+result: 
+"linux-vdso.so.1 (0x00007ffe3296a000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007f6a3230b000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000563ae5421000)"
+
+command: ldd clogitB
+result: not a dynamic executable //this means that it is static
 -------------------------------------------------------------------------------
