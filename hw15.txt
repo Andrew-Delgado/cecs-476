@@ -1,3 +1,144 @@
 Andrew Delgado
 csa476y1
 lab71.net.cecs.csulb.edu
+
+
+Examine the manual entry for the configuration file (xorg.conf).
+1)  What configuration option disables the action of 
+    the control-alt-backspace combination.
+    In /etc/X11: Examine the xorg.conf-vesa configuration file. 
+    The manual entry for xorg.conf will also be helpful.
+
+    /etc/X11/xorg.conf-vesa
+    "Uncomment this to disable the <Crtl><Alt><BS> server abort sequence"
+-------------------------------------------------------------------------------
+
+2a) How many different mouse protocol options available?
+
+    21
+
+2b) If this file were to be used, what protocol option would 
+    be used for the mouse?
+    
+    Option "Protocol" "PS/2"
+    
+
+    Examine the initializations for xinit.
+
+2c) How is the default window manager set (use ls)?
+
+cd /etc/X11/xinit
+
+command "l"
+
+xinitrc.fvwm2*
+
+Verify this by starting X as bob (use the startx command).
+
+-------------------------------------------------------------------------------
+In the log directory:
+Examine the Xorg.0.log file (It was created when you started X in question 2.)
+3a) What mouse input device was found?
+
+cat /var/log/Xorg.0.log | grep mouse
+
+[794195.390] (II) config/udev: Adding input device 
+    Logitech USB Optical Mouse (/dev/input/mouse0)
+
+3b) What is the best Modeline supported by the monitor (VGA1)?
+
+nano /etc/X11/xorg.conf-vesa
+
+then find the monitor section, 1024x768 is put for every configuration
+
+3b) What keyboard layout was chosen? (xkb layout)
+
+cat /var/log/Xorg.0.log | grep keyboard
+
+[794195.391] (II) evdev: CHICONY HP Basic USB Keyboard: Configuring as keyboard
+-------------------------------------------------------------------------------
+Examine the device file system (use ls):
+4) What device does /dev/mouse link to?
+
+lrwxrwxrwx 1 root root 10 Mar  5 13:37 /dev/mouse -> input/mice
+
+-------------------------------------------------------------------------------
+
+In the djv account home directory:
+Examine the .xinitrc:
+5a) What window manager is used by this account?
+
+cd ~djv
+cat .xinitrc
+
+twm
+
+5b) How many windows are display when this account starts X?
+
+cd ~djv
+cat .xinitrc
+
+xterm -n "xterm" -g 80x56-0+0 \#+420+764 -sb -sl 300 &
+xterm -n "xterms" -g 80x24+0+0 \#+168+846 -sb -sl 300 &
+xterm -n "xterm2" -g 80x24+0-0 -sb -sl 300 &
+
+3 windows
+
+Examine the .twmrc:
+A button has been set up that raises a window (to be on top of the other windows).
+5c) Report the button and the line that does it?
+
+cat ~djv/.twmrc
+
+#Button1 =      : frame  : f.raise
+-------------------------------------------------------------------------------
+On your system as root:
+Modify the default fvwm settings to automatically start two 
+80x24 xterm windows in the upper left and lower right of the screen.
+ Also modify the settings so the background is solid yellow.
+6a) Report the name of the file and the modifications you made to that file?
+
+added to the bottom of /etc/X11/xinit/xinitrc.fvwm2 
+
+"xsetroot -solid yellow
+
+xterm -n "x1" -g 80x24+0+0 -sb -sl 300 &
+xterm -n "x2" -g 80x24-0-0 -sb -sl 300 &"
+
+Modify the default window manager to be twm.
+Verify this works by starting X as bob.
+6b) How did you do this?
+
+where twm
+result "/usr/bin/twm"
+
+added "ck-launch-session /usr/bin/twm" to the if statement at the bottom
+
+Modify the default back to fvwm.
+Verify you did this this by again starting X as bob.
+-------------------------------------------------------------------------------
+On your system (the user login doesn’t matter):
+Run the xvidtune program.
+7a) What are the horizontal and vertical display resolutions? 
+    (HDisplay, VDisplay)
+
+startx 
+xvidtune
+
+HDisplay = 1280
+VDisplay = 1024
+
+7b) What is the vertical synchonization rate?
+
+60.02 Hz
+-------------------------------------------------------------------------------
+On your system as sue:
+Modify sue’s account so it (a) uses twm as the window manager instead of the 
+default manager (b) automatically starts an xterm in the upper left and (c)
+sets the background to solid red. Verify by starting X as sue.
+8) Report the name of the file you created and the contents of that file.
+
+xsetroot -solid red
+xterm -n "x1" -g 80x24+0+0 -sb -sl 300 &
+twm
+-------------------------------------------------------------------------------
