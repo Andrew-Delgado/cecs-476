@@ -1,0 +1,27 @@
+1) fdisk: For the disk you administer describe the partitions that are 
+on the disk? For each partition report, where it starts, where it ends, 
+and what kind of a partition it is (Linux, DOS, swap). Be very careful with 
+this one, you have to be root to run fdisk, DO NOT MODIFY or WRITE anything 
+with fdisk; you can easily erase the disk. Record the information very 
+carefully, you have to use this information to rebuild after your disk crash.
+
+-------------------------------------------------------------------------------
+2) pkgtool: What packages are installed on the machine you administer. 
+Report just the first 6. Don’t bother to record the others, you will be 
+told what to install in the instructions for the install project.
+-------------------------------------------------------------------------------
+3) etherboot: Examine the installation DVD image on jaguar (slack14.2. 
+What is an etherboot? Hint 1: it’s a PXE installer. Hint 2: see the README.
+
+-------------------------------------------------------------------------------
+4) dhcp/tftp: Examine the dhcpd.conf jaguar. What is the name of the file
+ that will be download using tftp to start the boot sequence on your machine?
+  What is the host entry for your machine?
+
+-------------------------------------------------------------------------------
+5) The installation DVD is available using “boot from network”. 
+Boot the installation DVD from the network (press f12). I want to make sure 
+you can do this before we erase your harddrive. Report the number of 
+entries you found in /bin. (This answer doesn’t have any importance, 
+it’s just to make sure that you’ve been able to do the boot.)
+-------------------------------------------------------------------------------
