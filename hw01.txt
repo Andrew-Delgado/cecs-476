@@ -2,30 +2,38 @@ Andrew Delgado
 csa476y1
 lab71.net.cecs.csulb.edu
 
-
+Report: the number of entries in the password file and the command you used to find out.
 1) command: "cd /etc"
    command: "wc -l passwd"
    result: 79
+
+Examine: the configuration file that controls the inetd system service on your Linux system.
+2) Report: What is the exact name of this file, in what directory did you find this file, and what commands
+did you use to do this.
 
 2) The exact name of this file "inetd.conf"
    I found this file in the /etc directory
    command: "cd /etc"
    command: "cat inetd.conf"
 
+Report: What is the name of that program, in what directory (where) is the program found and what
+commands did you use to do this.
 3) command: "df"
    how to find the directory of this program?
    command: "whereis df"
    result:  "/usr/bin/df"
 
+
 4) xorg.conf-vesa
    xorg.conf.d/
+
 
 5) libXfontcache.la 
    libXfontcache.so -> libXfontcache.so.1.0.0
    libXfontcache.so.1 -> libXfontcache.so.1.0.0
    libXfontcache.so.1.0.0
 
-6) command: "cat cpuinfo"
+6) command: "cat /proc/cpuinfo"
    2000.000 MHz
 
 7) command: "ls -l -r --sort=time"
