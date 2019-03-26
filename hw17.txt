@@ -1,0 +1,20 @@
+Suddenly, the machine which you are assigned to administer, contains an empty hard drive. (When you are
+ready to do this project, let me know and write your lab machine number on the board so I can “clean”
+your machine’s hard drive.)
+
+Configure the machine according to the attached build page (VERY carefully). If you don’t include the
+correct software, later projects won’t work.. If you botch the network configuration, your home directories
+won’t be available.
+
+Do not configure the sdb drive, that will be done by students next semester (if you want, you can wipe the
+drive to make things cleaner).
+
+The root password should be set to the same as before.
+Once you have configured the system, create one local user (called bob) with the password we’ve used on
+him before. Don’t forget his home directory.
+
+Report: Boot from the hard drive. Login with your csa476xx account, run ls to make sure your home
+directory is there. Then run df, and report the amount disk free on on all of your mounts. This report
+submission (in addition to the one line df) should contain your machine name. (Note: for the final, you
+REALLY want to know the steps of the install; for the report, all I want is to verify the install worked.
+SAVE YOUR NOTES ABOUT THE INSTALL!)
