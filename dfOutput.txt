@@ -1,0 +1,9 @@
+Filesystem          Size  Used Avail Use% Mounted on
+/dev/root           133G  7.8G  118G   7% /
+devtmpfs            973M     0  973M   0% /dev
+tmpfs               975M  888K  974M   1% /run
+tmpfs               975M     0  975M   0% /dev/shm
+cgroup_root         975M     0  975M   0% /sys/fs/cgroup
+cgmfs               100K     0  100K   0% /run/cgmanager/fs
+134.139.248.17:/u3  459G   46G  390G  11% /net/cheetah/u3
+134.139.248.17:/u4  459G  281G  155G  65% /net/cheetah/u4
