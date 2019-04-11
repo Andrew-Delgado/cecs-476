@@ -1,0 +1,76 @@
+Andrew Delgado
+lab71.net.cecs.csulb.edu
+csa476y1
+
+-------------------------------------------------------------------------------
+1) As bob modify your incoming mail handling as follows (you’ll need to create a .procmailrc file if it
+doesn’t exist):
+a) If the Subject line contains the word “Late”, place the mail in a file called latestuff.
+b) If it is from csa476xx (use your account here) place the mail in a file called importantstuff
+c) If the body of the mail contains the word Bargain place the mail in a file called junkmail
+If an incoming mail matches multiple actions, the first actions specified should be taken. Use lockfiles in all
+cases.
+Report: the contents of bob’s .procmailrc
+
+:0 B:
+* Late
+/home/bob/latestuff
+
+:0 B:
+* csa476y1
+/home/bob/importantstuff
+
+:0 B:
+* Bargain
+/home/bob/junkmail
+
+
+-------------------------------------------------------------------------------
+For the next question, examine the sendmail.cf file on your machine. (If you have changed yours, you
+may examine the one on panther.)
+2) Report the number of the ruleset that converts header names to masqueraded form.
+
+cat sendmail.cf | grep header
+
+Ruleset 93
+-------------------------------------------------------------------------------
+For the next question use the manual and possibly some additional commands.
+3) Report the name and full path name of the pop3 server.
+
+name: popa3d
+
+full path name: /usr/sbin/popa3d
+
+Make a copy of the standard slackware mc macros. (/usr/share/sendmail/cf/cf) Modify the copy of the
+macros so jaguar is setup as being the “smart host” for your machine. Modify the copy of the macros so
+jaguar is setup as being the “mail hub” for your machine. Build the macros into a cf (Build), install the
+cf as the new mail configuration, restart sendmail.
+
+define(`SMART_HOST',`jaguar.net.csulb.edu')
+define(`MAIL_HUB', `jaguar.net.csulb.edu')
+
+
+Modify the new sendmail configuration so that mail for bob and root is to be delivered locally and not to
+the mail hub.
+Test the mail hub change by (from root) sending mail to your csa account (should be readable on jaguar)
+and to bob (should be readable on your machine) with no @ signs.
+Test the smart host change by (from root) sending mail to your csa account @panther (should be readable
+on panther and the log on your machine should say “relay = jaguar.net.cecs.csulb.edu”).
+
+-------------------------------------------------------------------------------
+4) Report the changes you made to the macros.
+
+define(`SMART_HOST',`jaguar.net.csulb.edu')
+define(`MAIL_HUB', `jaguar.net.csulb.edu')
+
+-------------------------------------------------------------------------------
+5) Report: the change you made to the cf (the special case stuff for bob and root).
+
+C{L}bob
+C{L}root
+-------------------------------------------------------------------------------
+
+
+/etc/rc.d/rc.sendmail restart
+
+mail bob < /home/bob/emailToBob.txt
