@@ -66,8 +66,7 @@ define(`MAIL_HUB', `jaguar.net.csulb.edu')
 -------------------------------------------------------------------------------
 5) Report: the change you made to the cf (the special case stuff for bob and root).
 
-C{L}bob
-C{L}root
+CLroot bob
 -------------------------------------------------------------------------------
 
 
