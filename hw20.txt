@@ -57,6 +57,9 @@ last line "SU 04/11 18:18 + /dev/pts/3 bob-root"
 -------------------------------------------------------------------------------
 6. 
 
+6) Report: Ignoring your account, who where the last 3 logins, to what accounts, what hours were they on
+and where did they login from.
+
 last
 
 csa476v1 pts/19       134.139.248.68   Thu Apr 11 18:24 - 18:26  (00:02)    
@@ -65,11 +68,15 @@ csa476v1 pts/34       134.139.248.68   Thu Apr 11 18:23 - 18:24  (00:00)
 -------------------------------------------------------------------------------
 7.
 
+Use iptables to block ssh into your machine from panther only. To test this, try to ssh into your machine
+from both panther and puma.
+
 iptables -A INPUT -p tcp --dport ssh -s 134.139.248.21 -j REJECT
 
 iptables -F
 -------------------------------------------------------------------------------
 8.
+On cheetah, examine /usr/local/bin/iptables-rules.sh to see cheetah’s firewall rules.
 
 $IPT -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 -------------------------------------------------------------------------------
