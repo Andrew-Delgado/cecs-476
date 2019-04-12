@@ -1,0 +1,75 @@
+Andrew Delgado
+lab71.net.cecs.csulb.edu
+csa476y1
+
+
+-------------------------------------------------------------------------------
+1.
+
+Report: the last two lines in the datelog
+csa476y1  Thu Apr 11 17:49:30 2019
+
+-------------------------------------------------------------------------------
+2.
+
+Verify security: try doing the same thing by creating (as bob) a shell script that writes to the file using
+”echo” commands. (Don’t be particular about the exact things you echo.) Make the shell script SUID.
+Login as your account: run the shell script.
+2) Report: what happens.
+
+/home/bob/20Script.sh: line 3: datelog: Permission denied
+
+-------------------------------------------------------------------------------
+3.
+
+Examine the login.defs file on your machine.
+If you want to enable time restrictions on logins, a variable needs to be set and a file needs to be modified.
+3) Report the variable and the file name.
+
+    /etc/porttime
+
+    PORTTIME_CHECKS_ENAB    yes
+-------------------------------------------------------------------------------
+4.
+If a home directory for a user cannot be found when that user attempts to login, 
+the user may or may not be allowed to complete the login 4) Report the name of 
+the variable that controls this behavior
+
+DEFAULT_HOME
+-------------------------------------------------------------------------------
+Make (and test) the following modifications to your login.defs file:
+a) Log all su activity
+b) Limit su to root to be from the wheel only. To test this, add bob to the 
+wheel group (gid 10), but do
+not add your account, make sure bob can su and you cannot.
+-------------------------------------------------------------------------------
+5.
+
+SYSLOG_SU_ENAB          yes
+
+also uncommented this /var/log/sulog
+
+/etc/groups 
+
+add bob at wheel gid 10
+
+last line "SU 04/11 18:18 + /dev/pts/3 bob-root"
+-------------------------------------------------------------------------------
+6. 
+
+last
+
+csa476v1 pts/19       134.139.248.68   Thu Apr 11 18:24 - 18:26  (00:02)    
+csa476b2 pts/45       10.39.87.14      Thu Apr 11 18:23   still logged in   
+csa476v1 pts/34       134.139.248.68   Thu Apr 11 18:23 - 18:24  (00:00)  
+-------------------------------------------------------------------------------
+7.
+
+iptables -A INPUT -p tcp --dport ssh -s 134.139.248.21 -j REJECT
+
+iptables -F
+-------------------------------------------------------------------------------
+8.
+
+$IPT -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+-------------------------------------------------------------------------------
