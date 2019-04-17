@@ -1,3 +1,7 @@
+Andrew Delgado
+csa476y1
+lab71.net.cecs.csulb.edu
+
 If you did not load the http package when you loaded the system you can install it from
 jaguar:/sdb/slack13.37-64/slackware64/n/httpd-2.2.17-x86_64-3.txz.
 -------------------------------------------------------------------------------
@@ -22,6 +26,27 @@ Note: do the security with the http mechanisms, do NOT do this by using chmod on
 directories to make them unreadable.
 Submit: You had to change several things in the configuration files; report each of the changes you made.
 (Don’t report the whole file, only the changes.)
+
+
+mkdir /home/bob/public_html
+mkdir /home/ftp/public_html
+
+cp ~djv/index.html to both directories
+
+<Directory /home/*>
+AllowOverride ALL
+Options Indexes FollowSymLinks
+Require all granted
+</Directory>
+
+<Directory /home/ftp>
+Deny from all
+</Directory>
+
+LoadModule userdir_module lib64/httpd/modules/mod_userdir.so
+Include /etc/httpd/extra/httpd-userdir.conf
+
+
 -------------------------------------------------------------------------------
 4) Create a new directory and put a page into it. Call the directory
 http://labxx.net.cecs.csulb.edu/~bob/limited. A copy of bob’s home page is fine. Add an
@@ -32,12 +57,55 @@ joe using password access33.
 Note: joe deliberately is a http “user” only, he does not have a login account on your machine. Testing:
 make sure when you try to access the secure page, a password is required and the password works.
 Submit: the contents of your .htaccess file. The exact form of the htpasswd command you used for bob.
+
+.htaccess
+
+AuthName "server"
+Authtype basic
+AuthUserFile /home/bob/public_html/limited/.htpasswd
+require valid-user
+
+
+then run commands
+
+htpasswd -c .htpasswd bob
+htpasswd .htpasswd joe
+
+
+
+-------------------------------------------------------------------------------
 5) Disallow access to all files ending in .secret Place in ~bob a test file called test.secret. It should be
 readable by everyone (test using your account or confirm using ls). Make sure you cannot access that file
 from the web browser.
 Submit: Report the change you made to the configuration files.
+
+<Directory /home/*>
+AllowOverride ALL
+Options Indexes FollowSymLinks
+Require all granted
+
+<FilesMatch "\.secret">
+Order allow,deny
+Deny from all
+Satisfy All
+</FilesMatch>
+
+</Directory>
+
+<Directory /home/ftp>
+Deny from all
+</Directory>
+
+-------------------------------------------------------------------------------
 6) Enable cgi scripts in the user home directories. Make a copy of the script ~djv/msg.cgi into the public
 portion (public_html) of bob’s web directory. It’s text, you can look at it to see what it should display.
 Make sure you can access the page.
 Submit: Report the changes you made to the configuration files.
 Leave the httpd server running so I can test your configurations
+
+
+LoadModule cgi_module lib64/httpd/modules/mod_cgi.so
+Options Indexes FollowSymLinks ExecCGI
+
+AddHandler cgi-script .cgi
+-------------------------------------------------------------------------------
