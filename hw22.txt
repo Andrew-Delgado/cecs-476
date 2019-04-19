@@ -30,6 +30,89 @@ number (192.168.1.1) and make sure it finds the name. Do this for the other name
 Report: Which files did you install and what was in them. Suggestion: Put each of the files into your
 submission. As the first or second line in the file put a comment that contains the name of the file.
 
+//named.conf
+options {
+	directory "/etc/named";
+	/*
+	 * If there is a firewall between you and nameservers you want
+	 * to talk to, you might need to uncomment the query-source
+	 * directive below.  Previous versions of BIND always asked
+	 * questions using port 53, but BIND 8.1 uses an unprivileged
+	 * port by default.
+	 */
+	// query-source address * port 53;
+};
+
+// 
+// a caching only nameserver config
+// 
+zone "." IN {
+	type hint;
+	file "named.root";
+};
+
+zone "localhost" IN {
+	type master;
+	file "localhost.zone";
+	allow-update { none; };
+};
+
+zone "0.0.127.in-addr.arpa" IN {
+	type master;
+	file "named.local";
+	allow-update { none; };
+};
+
+zone "net71.cecs.csulb.edu" IN {
+	type master;
+	file "named.hosts";
+};
+
+zone "1.168.192.in-addr.arpa" IN {
+	type master;
+	file "named.rev";
+};
+
+-------------------------------------------------------------------------------
+//named.hosts
+$TTL 86400
+@ IN SOA lab71.net.cecs.csulb.edu. root.lab71.net.cecs.csulb.edu. (
+	      2006042801   ; Serial
+              28800        ; Refresh
+              14400        ; Retry
+              3600000      ; Expire
+              86400)       ; Minimum
+ IN NS lab71.net.cecs.csulb.edu.
+
+test01 IN A 192.168.1.1
+test02 IN A 192.168.1.2
+-------------------------------------------------------------------------------
+//named.rev
+$TTL  86400
+@  IN  SOA  lab71.net.cecs.csulb.edu. root.lab71.net.cecs.csulb.edu.  (
+                   2012111300 ; Serial
+                   28800      ; Refresh
+                   14400      ; Retry
+                   3600000    ; Expire
+                   86400 )    ; Minimum
+  IN NS lab71.net.cecs.csulb.edu.
+1 IN PTR test01.net71.cecs.csulb.edu.
+2 IN PTR test02.net71.cecs.csulb.edu.
+-------------------------------------------------------------------------------
+//named.local
+$TTL	86400
+@       IN      SOA     localhost. root.localhost.  (
+                                      2011032500 ; Serial
+                                      28800      ; Refresh
+                                      14400      ; Retry
+                                      3600000    ; Expire
+                                      86400 )    ; Minimum
+              IN      NS      localhost.
+
+1       IN      PTR     localhost.
+
 
 Report: Give exactly one of your tests. This will indicate which command you used in testing and the
 exact format of that command.
+
+nslookup 192.168.1.1 lab71
