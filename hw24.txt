@@ -1,3 +1,9 @@
+Andrew Delgado
+csa476y1
+lab71.net.cecs.csulb.edu
+
+
+-------------------------------------------------------------------------------
 This project is about dhcp and remote booting.
 Your dhcp server is jaguar. You will examine the setup of the dhcp server on jaguar for this project.
 Be careful that the submit answers to the questions are correct for the machine you administer.
@@ -5,23 +11,80 @@ Be careful that the submit answers to the questions are correct for the machine 
 Examine the dhcpd.conf file and answer the following questions. What file does your machine use to
 boot? What domain name server does your machine use? Give the lines that set the subnet, netmask and
 router for your machine. Give the lines that set the name and IP address of your machine.
+
+filename "/tftpboot/pxelinux.0";
+
+option domain-name-servers 134.139.248.2;
+
+group {
+  next-server 134.139.248.33 ;
+  subnet 134.139.248.32 netmask 255.255.255.224 {
+    option routers 134.139.248.33;
+  }
+
+host lab71 {
+    #hardware ethernet 00:11:11:92:0a:89 ;
+    hardware ethernet 00:22:4d:4c:79:f8 ;
+    fixed-address 134.139.248.71 ;
+  }
 -------------------------------------------------------------------------------
 Search the rc.d directory. Which file starts dhcp?
+
+/etc/rc.d/rc.local
 -------------------------------------------------------------------------------
 The file from the previous questions also starts the trivial file transfer protocol server. It is started with an
 option, what does that option mean?
+
+/usr/sbin/in.tftpd -l
+
+the l means 
+
+Default to literal mode. Used to avoid special processing of ':' in a file name
 -------------------------------------------------------------------------------
 Examine the in.tftpd process on jaguar. What option is it running with? What does that option mean?
+
+command ps aux | grep 'tftpd -'
+
+root      1135  0.0  0.0   8928   208 ?        Ss   Feb12   0:00 /usr/sbin/in.tftpd -l
+
+It defaults to literal mode.
 -------------------------------------------------------------------------------
 Examine the in.tftpd entry in inetd.conf. What options does it start in.tftpd with? What do these
 option mean?
+
+/usr/sbin/in.tftpd  in.tftpd -s
+
+-s chroot to this directory when you run
 -------------------------------------------------------------------------------
 Which is more secure, the inetd.conf or the way the instructor actually started it? (This is what happens
 when you get in a hurry.)
+
+inetd.conf is more secure
 -------------------------------------------------------------------------------
 Examine the default config file pxelinux.cfg. How many boot options are there? (Hint: Did you see
 boot options when you did the install.)
+
+There are 9 total boot options.
+
+Only 2 are being used though.
 -------------------------------------------------------------------------------
 Examine the default.std config file pxelinux.cfg (this file is not used). How many boot options are
 there? Which kernels can be booted? Which message files can be displayed?
+
+There are 3 boot options
+
+label huge.s
+  kernel kernels/huge.s/bzImage
+  append initrd=initrd.img load_ramdisk=1 prompt_ramdisk=0 rw SLACK_KERNEL=huge.s
+label hugesmp.s
+  kernel kernels/hugesmp.s/bzImage
+  append initrd=initrd.img load_ramdisk=1 prompt_ramdisk=0 rw SLACK_KERNEL=hugesmp.s
+label speakup.s
+  kernel kernels/speakup.s/bzImage
+  append initrd=initrd.img load_ramdisk=1 prompt_ramdisk=0 rw SLACK_KERNEL=speakup.s
+
+
+  message.txt can be displayed
+
+
 -------------------------------------------------------------------------------
